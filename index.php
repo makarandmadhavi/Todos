@@ -17,19 +17,24 @@ $dones=getdone();
 </head>
 
 <body>
-    <div class="container">
-        <h1 class="text-center">Todos</h1>
+    <div style="margin-top:2%" class="container">
+        <div class="row">
+        <h1 class="text-center col-sm-9">Todos</h1>
+        <button style="margin:2%" onclick="clearcompleted(0)" class="btn btn-info">clear all</button>
+        </div>
 
         <?php foreach($todos as $todo){ ?>
         <div class="row mt">
-            <input value="<?=$todo['todo']?>" class="form-control col-sm-9 font-weight-bold text-center"
+            <input value="<?=$todo['todo']?>" id="todo<?=$todo['id']?>" class="form-control col-sm-9 font-weight-bold text-center"
                 disabled type="text">
 
 
             <div class="col-sm-3">
-                <button onclick="markasdone(<?=$todo['id']?>)" class="btn btn-success">done</button>
-                <button class="btn btn-info">edit</button>
-                <button onclick="deletetodo(<?=$todo['id']?>)" class="btn btn-danger">delete</button>
+                <button onclick="markasdone(<?=$todo['id']?>)" id="btndone<?=$todo['id']?>" class="btn btn-success">done</button>
+                <button onclick="edittodo(<?=$todo['id']?>,'<?=$todo['todo']?>')" id="btnedit<?=$todo['id']?>" class="btn btn-info">edit</button>
+                <button onclick="deletetodo(<?=$todo['id']?>)" id="btndelete<?=$todo['id']?>" class="btn btn-danger">delete</button>
+                <button onclick="update(<?=$todo['id']?>)" id="btnupdate<?=$todo['id']?>" class="btn btn-success hide">update</button>
+                <button onclick="cancel(<?=$todo['id']?>)" id="btncancel<?=$todo['id']?>" class="btn btn-danger hide">cancel</button>
             </div>
         </div>
         <?php } ?>
@@ -44,19 +49,25 @@ $dones=getdone();
 
     </div>
     <div class="container">
-        <h1 class="text-center">Completed</h1>
+        <h1 class="text-center col-sm-9">Completed</h1>
+        
         <?php foreach($dones as $todo){ ?>
         <div class="row mt">
 
-            <input value="<?=$todo['todo']?>" class="form-control col-sm-9 font-weight-bold text-center"
+            <input value="<?=$todo['todo']?>" id="todo<?=$todo['id']?>" class="form-control col-sm-9 font-weight-bold text-center"
                 disabled type="text">
             <div class="col-sm-3">
-                <button onclick="markasundone(<?=$todo['id']?>)" class="btn btn-success">un done</button>
-                <button class="btn btn-info">edit</button>
-                <button onclick="deletetodo(<?=$todo['id']?>)" class="btn btn-danger">delete</button>
+                <button onclick="markasundone(<?=$todo['id']?>)" id="btndone<?=$todo['id']?>" class="btn btn-success">un done</button>
+                <button onclick="edittodo(<?=$todo['id']?>,'<?=$todo['todo']?>')" id="btnedit<?=$todo['id']?>" class="btn btn-info">edit</button>
+                <button onclick="deletetodo(<?=$todo['id']?>)" id="btndelete<?=$todo['id']?>" class="btn btn-danger">delete</button>
+                <button onclick="update(<?=$todo['id']?>)" id="btnupdate<?=$todo['id']?>" class="btn btn-success hide">update</button>
+                <button onclick="cancel(<?=$todo['id']?>)" id="btncancel<?=$todo['id']?>" class="btn btn-danger hide">cancel</button>
             </div>
         </div>
         <?php } ?>
+        <div class="d-flex justify-content-center col-sm-9">
+        <button style="margin:5px" onclick="clearcompleted(1)" class="btn btn-info">clear completed</button>
+        </div>
 
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
