@@ -1,3 +1,9 @@
+.btncenter {
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
 
 .mt{
     margin: 2%;
@@ -6,4 +12,85 @@
 .hide
 {
   display:none;
+}
+
+.shadow{
+  -webkit-box-shadow: 12px 8px 46px 0px rgba(0,0,0,0.67);
+  -moz-box-shadow: 12px 8px 46px 0px rgba(0,0,0,0.67);
+  box-shadow: 12px 8px 46px 0px rgba(0,0,0,0.67);
+}
+
+.bggrey{
+
+  background-color:	rgb(233, 233, 233);
+}
+
+.bg-white{
+  background-color:white;
+}
+
+body{
+  font-family: 'Roboto';
+}
+
+h1{
+  font-weight: 100;
+  font-size: 60px;
+
+}
+h3{
+  font-weight: 100;
+}
+
+
+.clearbtn{
+  position: absolute;
+  top: 8px;
+  right: 16px;
+
+}
+
+.topright {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  font-size: 18px;
+}
+
+.outer {
+  width: 50%;
+  margin-top: 5%;
+}
+
+.pad{
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+
+input[type="text"]:disabled {
+  background:rgba(233, 233, 233, 0);
+  border-style: none;
+  
+}
+input{
+  background:rgba(233, 233, 233, 0);
+  border-style: none;
+  border-bottom: 1px solid rgb(84, 146, 240);
+
+}
+
+.hov:hover { 
+  background-color: rgba(64, 198, 231, 0.199);
+  transition-delay:200ms;
+}
+.hov{
+  transition:200ms;
+  transition-delay:200ms;
+}
+
+.clearcompbtn{
+  position: relative;
+  top:3px;
+  left:550px;
+
 }

@@ -1,9 +1,9 @@
-temp="";
-
-function addtodo(){
-    newtodo= $('#newtodo').val();
-   console.log(newtodo);
-   // console.log(y);
+temp = "";
+var active=0;
+function addtodo() {
+    newtodo = $('#newtodo').val();
+    console.log(newtodo);
+    // console.log(y);
     $.ajax({
         type: "POST",
         url: "backend/addtodo_ajax.php",
@@ -12,21 +12,20 @@ function addtodo(){
             newtodo
         },
         success: function (data) {
-           //data is returned here
-            if(data == "SUCCESS"){
+            //data is returned here
+            if (data == "SUCCESS") {
                 //alert("Successfully Registered");
-                window.location = '';
-            }
-            else{
+                reload();
+            } else {
                 alert("Failed");
             }
         }
     });
 }
 
-function markasdone(id){
-   
-   //console.log(id);
+function markasdone(id) {
+
+    //console.log(id);
     $.ajax({
         type: "POST",
         url: "backend/markasdone_ajax.php",
@@ -35,12 +34,11 @@ function markasdone(id){
             id
         },
         success: function (data) {
-           //data is returned here
-            if(data == "SUCCESS"){
+            //data is returned here
+            if (data == "SUCCESS") {
                 //alert("Successfully Registered");
-                window.location = '';
-            }
-            else{
+                reload();
+            } else {
                 alert("failed");
                 //console.log(data);
             }
@@ -48,79 +46,76 @@ function markasdone(id){
     });
 }
 
-function markasundone(id){
-   
+function markasundone(id) {
+
     //console.log(id);
-     $.ajax({
-         type: "POST",
-         url: "backend/markasundone_ajax.php",
-         data: {
-             //data goes here
-             id
-         },
-         success: function (data) {
+    $.ajax({
+        type: "POST",
+        url: "backend/markasundone_ajax.php",
+        data: {
+            //data goes here
+            id
+        },
+        success: function (data) {
             //data is returned here
-             if(data == "SUCCESS"){
-                 //alert("Successfully Registered");
-                window.location = '';
-             }
-             else{
-                 alert("failed");
-                 //console.log(data);
-             }
-         }
-     });
- }
-
- function deletetodo(id){
-   
-    //console.log(id);
-     $.ajax({
-         type: "POST",
-         url: "backend/deletetodo_ajax.php",
-         data: {
-             //data goes here
-             id
-         },
-         success: function (data) {
-            //data is returned here
-             if(data == "SUCCESS"){
-                 //alert("Successfully Registered");
-                 window.location = '';
-             }
-             else{
-                 alert("failed");
-                 //console.log(data);
-             }
-         }
-     });
- }
-
- function edittodo(id,txt){
-     temp=txt;
-     $('#todo'+id).removeAttr("disabled");
-     $('#btnedit'+id).hide();
-     $('#btndelete'+id).hide();
-     $('#btndone'+id).hide();
-     $('#btncancel'+id).show();
-     $('#btnupdate'+id).show();
- }
-
- function cancel(id){
-     console.log(temp);
-    $('#todo'+id).val(temp);
-    $('#todo'+id).attr("disabled","disabled");
-    $('#btnedit'+id).show();
-    $('#btndelete'+id).show();
-    $('#btndone'+id).show();
-    $('#btncancel'+id).hide();
-    $('#btnupdate'+id).hide();
+            if (data == "SUCCESS") {
+                //alert("Successfully Registered");
+                reload();
+            } else {
+                alert("failed");
+                //console.log(data);
+            }
+        }
+    });
 }
 
-function update(id){
-    newtodo= $('#todo'+id).val();
-   console.log(newtodo);
-   // console.log(y);
+function deletetodo(id) {
+
+    //console.log(id);
+    $.ajax({
+        type: "POST",
+        url: "backend/deletetodo_ajax.php",
+        data: {
+            //data goes here
+            id
+        },
+        success: function (data) {
+            //data is returned here
+            if (data == "SUCCESS") {
+                //alert("Successfully Registered");
+                reload();
+            } else {
+                alert("failed");
+                //console.log(data);
+            }
+        }
+    });
+}
+
+function edittodo(id, txt) {
+    temp = txt;
+    active=id;
+    $('#todo' + id).removeAttr("disabled");
+    $('#btnedit' + id).hide();
+    $('#btndelete' + id).hide();
+    $('#btndone' + id).hide();
+    $('#btncancel' + id).show();
+    $('#btnupdate' + id).show();
+}
+
+function cancel(id) {
+    active=0;
+    console.log(temp);
+    $('#todo' + id).val(temp);
+    $('#todo' + id).attr("disabled", "disabled");
+    $('#btncancel' + id).hide();
+    $('#btnupdate' + id).hide();
+}
+
+function update(id) {
+    newtodo = $('#todo' + id).val();
+    console.log(newtodo);
+    // console.log(y);
     $.ajax({
         type: "POST",
         url: "backend/updatetodo_ajax.php",
@@ -130,22 +125,21 @@ function update(id){
             id
         },
         success: function (data) {
-           //data is returned here
-            if(data == "SUCCESS"){
+            //data is returned here
+            if (data == "SUCCESS") {
                 //alert("Successfully Registered");
-                window.location = '';
-            }
-            else{
+                reload();
+            } else {
                 alert("Failed");
             }
         }
     });
 }
 
-function clearcompleted(all){
-    
-   console.log(newtodo);
-   // console.log(y);
+function clearcompleted(all) {
+
+    console.log(newtodo);
+    // console.log(y);
     $.ajax({
         type: "POST",
         url: "backend/clear_ajax.php",
@@ -154,14 +148,46 @@ function clearcompleted(all){
             all
         },
         success: function (data) {
-           //data is returned here
-            if(data == "SUCCESS"){
+            //data is returned here
+            if (data == "SUCCESS") {
                 //alert("Successfully Registered");
-                window.location = '';
-            }
-            else{
+                reload();
+            } else {
                 alert("Failed");
             }
         }
     });
 }
+
+function reload() {
+    $('body').load("index.php");
+}
+
+
+$(".hov").hover(function () {
+    //alert(this.id);
+    if ($("#todo" + this.id).prop('disabled') && !active) {
+        $('#btndone' + this.id).show(50);
+        $('#btnedit' + this.id).show(50);
+        $('#btndelete' + this.id).show(50);
+    }
+    else{
+
+    }
+}, function () {
+    if ($("#todo" + this.id).prop('disabled')  && !active) {
+    $('#btndone' + this.id).hide(50);
+    $('#btnedit' + this.id).hide(50);
+    $('#btndelete' + this.id).hide(50);
+    }else{
+
+    }
+    //after hover
+});
+
+$("body").click(function(){
+    if(active && event.target.nodeName=="BODY"){
+        cancel(active);
+
+    }
+});
