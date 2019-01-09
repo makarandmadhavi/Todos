@@ -16,10 +16,10 @@ $dones=getdone();
 
 </head>
 
-<body class="bg">
-    <div class="container outer">
+<body class="bggrey">
+    <div class="container outer ">
         <button onclick="clearcompleted(0)" class="btn btn-info clearbtn">clear all</button>
-        <div style="margin-top:2%" class="container shadow pad">
+        <div style="margin-top:2%" class="container shadow pad bgwhite">
             <div style="margin-bottom:2%;" class="row">
                 <h1 class="text-center col-sm-12">Todos</h1>
 
@@ -53,7 +53,7 @@ $dones=getdone();
 
         </div>
         <br>
-        <div style="padding-top:1%;" class="container shadow pad">
+        <div style="padding-top:1%;" class="container shadow pad bgwhite">
         <button onclick="clearcompleted(1)" class="btn btn-info clearcompbtn">clear completed</button>
             <h1 style="margin-top:-10px; margin-bottom:20px;" class="text-center ">Completed</h1>
            
