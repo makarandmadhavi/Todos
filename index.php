@@ -55,7 +55,7 @@ $dones=getdone();
         <br>
         <div style="padding-top:1%;" class="container shadow pad">
         <button onclick="clearcompleted(1)" class="btn btn-info clearcompbtn">clear completed</button>
-            <h1 class="text-center ">Completed</h1>
+            <h1 style="margin-top:-10px; margin-bottom:20px;" class="text-center ">Completed</h1>
            
                 <?php 
                 if($dones==null){ ?>

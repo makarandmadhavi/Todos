@@ -70,6 +70,7 @@ h3{
 input[type="text"]:disabled {
   background:rgba(233, 233, 233, 0);
   border-style: none;
+  color: black;
   
 }
 input{
@@ -77,6 +78,13 @@ input{
   border-style: none;
   border-bottom: 1px solid rgb(84, 146, 240);
 
+}
+
+input[type="text"]:focus {
+  background:rgba(233, 233, 233, 0);
+  border:none;
+  outline: none;
+  border-bottom: 1px solid rgb(84, 146, 240);
 }
 
 .hov:hover { 
