@@ -1,8 +1,28 @@
-.btncenter {
+
+.btn-right-top{
+  font-size: 13px;
+  text-align: right;
+  position: absolute;
+  right: 10px;
+  top:10px;   
+}
+.btn-right1{
+  font-size: 15px;
+  text-align: right;
+  position: absolute;
+  right: 10px;
+  top:7px;   
+}
+.add-box{
+  margin-top: 30px;
+  background-color: #fff;
+  -webkit-box-shadow: 10px 10px 41px -4px rgba(0,0,0,0.21);
+  -moz-box-shadow: 10px 10px 41px -4px rgba(0,0,0,0.21);
+  box-shadow: 10px 10px 41px -4px rgba(0,0,0,0.21);
+  max-width: 500px;
+  border-radius: 8px;
+  padding: 10px;
   position: relative;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
 }
 
 .mt{
@@ -34,11 +54,13 @@ body{
 
 h1{
   font-weight: 100;
-  font-size: 60px;
-
 }
+
 h3{
   font-weight: 100;
+  
+  padding:40px;
+  padding-left:0px;
 }
 
 
@@ -66,38 +88,85 @@ h3{
   padding-bottom: 3%;
 }
 
-input[type="text"]:disabled {
-  background:rgba(233, 233, 233, 0);
-  border-style: none;
-  color: black;
-  
-}
+
 input{
-  background:rgba(233, 233, 233, 0);
-  border-style: none;
-  border-bottom: 1px solid rgb(84, 146, 240);
+    max-width: 500px ;
+    font-weight: 100 !important;
+    font-size: 24px !important;
+    border:none;
+    background-color:rgba(233, 233, 233, 0);
+    outline: none;
 
 }
 
-input[type="text"]:focus {
-  background:rgba(233, 233, 233, 0);
-  border:none;
-  outline: none;
-  border-bottom: 1px solid rgb(84, 146, 240);
-}
+
 
 .hov:hover { 
-  background-color: rgba(64, 198, 231, 0.199);
+  background-color: #F7FEFE;
   transition-delay:200ms;
 }
-.hov{
+/* .hov{
   transition:200ms;
   transition-delay:200ms;
-}
+} */
 
 .clearcompbtn{
   position: relative;
   top:3px;
   left:550px;
 
+}
+
+.btn {
+  margin: 10px;
+}
+
+.todo{
+   
+  position: relative;
+  height: 45px;
+  margin:2px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  transition: 0.9s;
+}
+
+.todo-text{
+  margin-left:10px;
+  margin-top:5px;
+}
+
+.btn-center{
+  font-size: 10px;
+  text-align: right;
+  position: absolute;
+  right: 65px;
+  top:0px;
+
+
+}
+.btn-left{
+  font-size: 10px;
+  text-align: right;
+  position: absolute;
+  right: 114px;
+  top:0px;
+
+
+}
+
+.btn-right{
+  font-size: 10px;
+  text-align: right;
+  position: absolute;
+  right: 10px;
+  top:0px;
+  
+
+  
+}
+
+#newtodo{
+  font-size:15px !important; 
+  margin-top:20px;    
 }

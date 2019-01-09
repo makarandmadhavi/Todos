@@ -16,8 +16,8 @@ $dones=getdone();
 
 </head>
 
-<body class="bggrey">
-    <div class="container outer ">
+<body style="background-color:#f1f1f1; padding:30px;">
+    <div class="container">
         <button onclick="clearcompleted(0)" class="btn btn-info clearbtn">clear all</button>
         <div style="margin-top:2%" class="container shadow pad bgwhite">
             <div style="margin-bottom:2%;" class="row">
