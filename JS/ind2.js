@@ -1,49 +1,10 @@
 temp = "";
 var active=0;
 
-jQuery.fn.putCursorAtEnd = function() {
-
-    return this.each(function() {
-      
-      // Cache references
-      var $el = $(this),
-          el = this;
-  
-      // Only focus if input isn't already
-      if (!$el.is(":focus")) {
-       $el.focus();
-      }
-  
-      // If this function exists... (IE 9+)
-      if (el.setSelectionRange) {
-  
-        // Double the length because Opera is inconsistent about whether a carriage return is one character or two.
-        var len = $el.val().length * 2;
-        
-        // Timeout seems to be required for Blink
-        setTimeout(function() {
-          el.setSelectionRange(len, len);
-        }, 1);
-      
-      } else {
-        
-        // As a fallback, replace the contents with itself
-        // Doesn't work in Chrome, but Chrome supports setSelectionRange
-        $el.val($el.val());
-        
-      }
-  
-      // Scroll to the bottom, in case we're in a tall textarea
-      // (Necessary for Firefox and Chrome)
-      this.scrollTop = 999999;
-  
-    });
-  
-  };
 
 function addtodo() {
     newtodo = $('#newtodo').val();
-    console.log(newtodo);
+    //console.log(newtodo);
     // console.log(y);
     $.ajax({
         type: "POST",
@@ -137,7 +98,8 @@ function edittodo(id, txt) {
     temp = txt;
     active=id;
     $('#todo' + id).removeAttr("disabled");
-    $('#todo' + id).focus().putCursorAtEnd();
+    moveCursorToEnd($('#todo'+id));
+    $('#todo' + id).focus();
     $('#btnedit' + id).hide();
     $('#btndelete' + id).hide();
     $('#btndone' + id).hide();
@@ -209,29 +171,38 @@ function reload() {
 $(".hov").hover(function () {
     //alert(this.id);
     if ($("#todo" + this.id).prop('disabled') && !active) {
-        $('#btndone' + this.id).show(50);
-        $('#btnedit' + this.id).show(50);
-        $('#btndelete' + this.id).show(50).fadeIn(50);
+        $('#btndone' + this.id).fadeIn(800);
+        $('#btnedit' + this.id).fadeIn(800);
+        $('#btndelete' + this.id).fadeIn(800);
     }
     else if(active==this.id){
-        $('#btnupdate' + this.id).show(50);
-        $('#btncancel' + this.id).show(50);
+        $('#btnupdate' + this.id).fadeIn(800);
+        $('#btncancel' + this.id).fadeIn(800);
     }
 }, function () {
     if ($("#todo" + this.id).prop('disabled')  && !active) {
-    $('#btndone' + this.id).hide(50);
-    $('#btnedit' + this.id).hide(50);
-    $('#btndelete' + this.id).hide(50);
+    $('#btndone' + this.id).fadeOut(400);
+    $('#btnedit' + this.id).fadeOut(400);
+    $('#btndelete' + this.id).fadeOut(400);
     }else if(active==this.id){
-        $('#btnupdate' + this.id).hide(50);
-        $('#btncancel' + this.id).hide(50);
+        $('#btnupdate' + this.id).fadeOut(400);
+        $('#btncancel' + this.id).fadeOut(400);
     }
     //after hover
 });
 
 $("body").click(function(){
-    if(active && event.target.nodeName=="BODY"){
+    //console.log(event.target.nodeName);
+    if(active && (event.target.nodeName=="BODY" || active && event.target.nodeName=="DIV") ){
         cancel(active);
+        //console.log("Cancel"+active);
 
     }
 });
+
+function moveCursorToEnd(input) {
+    var originalValue = input.val();
+    input.val('');
+    input.blur().focus().val(originalValue);
+}
+  
