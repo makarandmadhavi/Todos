@@ -164,7 +164,7 @@ function cleardone(all) {
 }
 
 function reload() {
-    $('body').load("ind2.php");
+    $('body').load("index.php");
 }
 
 
