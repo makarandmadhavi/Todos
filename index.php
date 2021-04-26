@@ -1,4 +1,4 @@
-<?php include 'Backend/getdata.php' ?>
+<?php include 'backend/getdata.php' ?>
 <?php
 $todos=getundone();
 $dones=getdone();

@@ -8,13 +8,14 @@ function addtodo() {
     // console.log(y);
     $.ajax({
         type: "POST",
-        url: "backend/addtodo_ajax.php",
+        url: "http://13.126.39.120:50050/backend/addtodo_ajax.php",
         data: {
             //data goes here
             newtodo
         },
         success: function (data) {
             //data is returned here
+	    console.log(data);
             if (data == "SUCCESS") {
                 //alert("Successfully Registered");
                 reload();
